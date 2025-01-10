@@ -7,12 +7,14 @@
   color: black;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 
 .card__image {
   width: 282px;
   height: 282px;
 }
+
 .card__description {
   display: flex;
   background-color: white;
@@ -32,9 +34,10 @@
   overflow: hidden;
   font-size: 24px;
   font-weight: 900;
-  font-family: "Inter-Black";
+  font-family: "Inter", "Arial", sans-serif;
   line-height: 29.05px;
 }
+
 .card__like-button {
   background: transparent url(../Images/like-inactive.svg) center no-repeat;
   width: 21px;
@@ -42,7 +45,22 @@
   border: none;
 }
 
+.card__like-button_active {
+  background: url("../Images/like-active.svg") 0 0 no-repeat;
+}
+
 .card__like-button:hover {
   cursor: pointer;
   opacity: 0.5;
+}
+
+.card__delete-button {
+  width: 18px;
+  height: 19.3px;
+  background: transparent url(../Images/Trash.svg) center no-repeat;
+  border: none;
+  position: absolute;
+  top: 26px;
+  right: 21px;
+  cursor: pointer;
 }
