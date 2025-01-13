@@ -3,6 +3,7 @@ import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
+import Section from "../components/section.js";
 
 import "./index.css";
 
@@ -88,6 +89,11 @@ const previewModalCloseButton = previewModal.querySelector(".modal__close");
 const modalImage = document.querySelector(".modal__preview-image");
 const modalFooter = document.querySelector(".modal__preview-footer");
 
+const cardsConfig = {
+  containerSelector: ".cards__list",
+  cardTemplateSelector: "#card-template",
+};
+
 const profileFormValidator = new FormValidator(
   validationSettings,
   profileEditForm
@@ -143,6 +149,7 @@ function createCard(data) {
 function renderCard(data, wrap) {
   const card = createCard(data);
   wrap.prepend(card);
+  // section.addItem(card)
 }
 
 /* Event Handlers */
@@ -200,6 +207,19 @@ addNewCardButton.addEventListener("click", () => {
 //     }
 //   });
 // });
+
+// create your section reference
+// const section = new Section()......
+
+const cardList = new Section(
+  {
+    items: initialCards,
+    renderer: (data) => {
+      cardList.addItem(createCard(data));
+    },
+  },
+  cardsConfig.containerSelector
+);
 
 initialCards.forEach((data) => {
   //cardListEl.append(cardElement);
