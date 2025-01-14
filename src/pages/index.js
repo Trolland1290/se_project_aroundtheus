@@ -146,11 +146,11 @@ function createCard(data) {
   return new Card(data, cardSelector, handleImageClick).getView();
 }
 
-function renderCard(data, wrap) {
-  const card = createCard(data);
-  wrap.prepend(card);
-  // section.addItem(card)
-}
+// function renderCard(data, wrap) {
+//   const card = createCard(data);
+//   wrap.prepend(card);
+//   // section.addItem(card)
+// }
 
 /* Event Handlers */
 
@@ -221,10 +221,7 @@ const cardList = new Section(
   cardsConfig.containerSelector
 );
 
-initialCards.forEach((data) => {
-  //cardListEl.append(cardElement);
-  renderCard(data, cardListEl);
-});
+cardList.renderItems(initialCards);
 
 // document.addEventListener("keydown", (evt) => {
 //   if (evt.key === "Escape") {
