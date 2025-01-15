@@ -242,7 +242,8 @@ likeButtons.forEach((likeButton) => {
 
 function handleCardSubmit(data) {
   // evt.preventDefault();
-  renderCard(data, cardListEl);
+  console.log("This is data", data);
+  cardList.addItem(createCard(data));
   cardTitleInput.value = "";
   cardLinkInput.value = "";
   addCardFormValidator.disableButton();
