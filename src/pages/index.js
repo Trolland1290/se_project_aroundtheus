@@ -4,48 +4,8 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/section.js";
-
+import { initialCards, validationSettings } from "../utils/constants.js";
 import "./index.css";
-
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  },
-
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  },
-];
-
-const validationSettings = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-};
-
-/*Elements  */
 
 const modals = document.querySelectorAll(".modal");
 
@@ -121,23 +81,6 @@ const userInfo = new UserInfo({
   userDescription: ".profile__description",
 });
 
-// function openPopup(modal) {
-//   modal.classList.add("modal_opened");
-//   document.addEventListener("keyup", handleEscKey);
-// }
-
-// function closePopup(modal) {
-//   modal.classList.remove("modal_opened");
-//   document.removeEventListener("keyup", handleEscKey);
-// }
-
-// function isEscEvent(evt, action) {
-//   if (evt.key === "Escape") {
-//     const activeModal = document.querySelector(".modal_opened");
-//     action(activeModal);
-//   }
-// }
-
 function handleImageClick(data) {
   imagePreviewPopup.open(data);
 }
@@ -146,14 +89,6 @@ function createCard(data) {
   return new Card(data, cardSelector, handleImageClick).getView();
 }
 
-// function renderCard(data, wrap) {
-//   const card = createCard(data);
-//   wrap.prepend(card);
-//   // section.addItem(card)
-// }
-
-/* Event Handlers */
-
 function handleProfileEditSubmit(inputValues) {
   userInfo.setUserInfo(inputValues.title, inputValues.description);
   // use the close method instead of this line
@@ -161,55 +96,18 @@ function handleProfileEditSubmit(inputValues) {
   editProfilePopup.close();
 }
 
-// function handleEscKey(evt) {
-//   isEscEvent(evt, closePopup);
-// }
-
-// Handlers
-
-/* Event Listeners */
-
 profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  const userData = userInfo.getUserInfo();
+  console.log(userData);
+  profileTitleInput.value = userData.userName;
+  profileDescriptionInput.value = userData.userDescription;
   profileFormValidator.resetValidation();
   editProfilePopup.open();
 });
 
-// profileEditCloseButton.addEventListener("click", () => {
-//   closePopup(profileEditModal);
-// });
-
-// addCardForm.addEventListener("submit", handleAddCardSubmit);
-
-// add listener to add modal close button
-
-// addNewCardButtonClose.addEventListener("click", () => {
-//   closePopup(addCardModal);
-// });
-
-// profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-/* add new card button  */
-
 addNewCardButton.addEventListener("click", () => {
   addNewCardPopup.open();
 });
-
-// previewModalCloseButton.addEventListener("click", () => {
-//   closePopup(previewModal);
-// });
-
-// -close forms
-// modals.forEach((modal) => {
-//   modal.addEventListener("mousedown", (evt) => {
-//     if (evt.target === modal) {
-//       closePopup(modal);
-//     }
-//   });
-// });
-
-// create your section reference
-// const section = new Section()......
 
 const cardList = new Section(
   {
@@ -223,51 +121,11 @@ const cardList = new Section(
 
 cardList.renderItems(initialCards);
 
-// document.addEventListener("keydown", (evt) => {
-//   if (evt.key === "Escape") {
-//     modals.forEach((modal) => {
-//       closePopup(modal);
-//     });
-//   }
-// });
-
-/* select like Buttons */
-
-/* const likeButtons = document.querySelectorAll(".card__like-button");
-likeButtons.forEach((likeButton) => {
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-}); */
-
 function handleCardSubmit(data) {
   // evt.preventDefault();
-  console.log("This is data", data);
   cardList.addItem(createCard(data));
   cardTitleInput.value = "";
   cardLinkInput.value = "";
   addCardFormValidator.disableButton();
   addNewCardPopup.close();
 }
-
-//addCardForm.addEventListener("submit", (event) => {
-// event.preventDefault();
-
-// closePopup(addCardModal);
-
-// const formData = new FormData(addCardForm);
-// const data = {};
-// for (let pair of formData.entries()) {
-//   data[pair[0]] = pair[1];
-// }
-
-// const cardElement = getCardElement(data);
-// HERE use the new Card instead, as you used above
-//const newCard = new Card(data, cardSelector, handleImageClick);
-
-// const cardElement = createCard.getView();
-// cardListEl.prepend(cardElement);
-// addCardForm.reset();
-//});
-
-// addCardForm.addEventListener("submit", handleCardSubmit);

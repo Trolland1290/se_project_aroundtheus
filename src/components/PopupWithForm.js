@@ -8,7 +8,7 @@ class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
   }
   close() {
-    this._modalForm.reset;
+    // this._modalForm.reset;
     // refers to ParentClass
     super.close();
   }
