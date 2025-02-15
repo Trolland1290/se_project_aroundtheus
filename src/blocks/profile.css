@@ -73,6 +73,32 @@
   margin-right: 30px;
 }
 
+.profile__image-container {
+  position: relative;
+  opacity: 1;
+}
+
+.profile__image-container:hover {
+  opacity: 0.5;
+}
+
+.profile__image-container:hover .profile__image-button {
+  opacity: 1;
+}
+
+.profile__image-button {
+  background: url(../Images/Edit\ Button.svg) center no-repeat;
+  border: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: -5%;
+  opacity: 0;
+  background-size: 50px;
+}
+
 @media screen and (max-width: 715px) {
   .profile {
     background-color: black;
