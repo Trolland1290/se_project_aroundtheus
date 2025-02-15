@@ -17,11 +17,14 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./Images/Avatar.jpg')%>"
-            alt="Avatar"
-            class="profile__image"
-          />
+          <div class="profile__image-container">
+            <img
+              src="<%=require('./Images/Avatar.jpg')%>"
+              alt="Avatar"
+              class="profile__image"
+            />
+            <button type="button" class="profile__image-button"></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -81,7 +84,7 @@
             ></span>
           </label>
 
-          <button class="modal__button" type="submit">Save</button>
+          <button class="modal__save" type="submit">Save</button>
         </form>
       </div>
     </div>
@@ -117,17 +120,49 @@
             <span class="modal__error" id="card-url-input-error"></span>
           </label>
 
-          <button class="modal__button" type="submit">Create</button>
+          <button class="modal__save" type="submit">Create</button>
         </form>
       </div>
     </div>
     <!-- Card Preview modal -->
     <div class="modal" id="preview-image-modal">
       <div class="modal__container modal__container_type_preview">
-        <button class="modal__close modal__close_type_preview"></button>
+        <button class="moal__close modal__close_type_preview"></button>
 
         <img src="" alt="" class="modal__preview-image" />
         <p class="modal__preview-footer"></p>
+      </div>
+    </div>
+    <!-- Confirm Delete Modal -->
+    <div class="modal" id="confirm-delete-modal">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <p class="modal__heading">Are you sure?</p>
+        <form class="modal__form" id="confirm-delete-form">
+          <button class="modal__save" type="submit">Yes</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Avatar Popup Modal -->
+    <div class="modal" id="avatar-modal">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <p class="modal__heading">Change Profile Picture</p>
+        <form class="modal__form" id="avatar-form">
+          <label class="modal__label">
+            <input
+              type="url"
+              name="link"
+              class="modal__input"
+              id="avatar-url-input"
+              placeholder="Image URL"
+              required
+            />
+            <span class="modal__error" id="avatar-url-input-error"></span>
+          </label>
+          <button class="modal__save" type="submit">Save</button>
+        </form>
       </div>
     </div>
 
