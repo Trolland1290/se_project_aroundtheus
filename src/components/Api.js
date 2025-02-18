@@ -33,9 +33,7 @@ class Api {
       headers: this._headers,
 
       method: "DELETE",
-    }).then((res) => {
-      // console.log(res);
-    });
+    }).then(this._handleServerResponse);
   }
 
   // // {name: todo here"}

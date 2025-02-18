@@ -132,7 +132,7 @@ function handleUpdateAvatar({ link }) {
     .changeProfilePic({ avatar: link })
     .then((data) => {
       avatarModal.close();
-      userInfo.setUserInfo(data.name, data.description, data.avatar);
+      userInfo.setUserInfo(data.name, data.about, data.avatar);
     })
     .catch((err) => {
       console.error(err);
