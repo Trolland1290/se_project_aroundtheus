@@ -81,7 +81,7 @@
   width: 100%;
 }
 
-.modal__button {
+.modal__save {
   margin-top: 18px;
   padding-top: 14px;
   padding-bottom: 19px;
@@ -92,7 +92,7 @@
   line-height: 22px;
 }
 
-.modal__button_disabled {
+.modal__save_disabled {
   background-color: gray;
 }
 
@@ -120,7 +120,7 @@
     line-height: 21.78px;
   }
 
-  .modal__button {
+  .modal__save {
     border-radius: 2px;
     width: 100%;
     font-size: 14px;
